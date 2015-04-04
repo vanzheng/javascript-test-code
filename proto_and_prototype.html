@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>__proto__与prototype的区别</title>
+</head>
+
+<body>
+    <h3>这里讨论下对象的内部原型(__proto__)和构造器的原型（prototype）的关系。</h3>
+    <p>一、所有构造器/函数的__proto__都指向Function.prototype，它是一个空函数（Empty function）</p>
+    <script type="text/javascript">
+    console.log('所有构造器/函数的__proto__都指向Function.prototype，它是一个空函数（Empty function）');
+    console.log(Number.__proto__ === Function.prototype); // true
+    console.log(Boolean.__proto__ === Function.prototype); // true
+    console.log(String.__proto__ === Function.prototype); // true
+    console.log(Object.__proto__ === Function.prototype); // true
+    console.log(Function.__proto__ === Function.prototype); // true
+    console.log(Array.__proto__ === Function.prototype); // true
+    console.log(RegExp.__proto__ === Function.prototype); // true
+    console.log(Error.__proto__ === Function.prototype); // true
+    console.log(Date.__proto__ === Function.prototype); // true
+    </script>
+    <p>JavaScript中有内置(build-in)构造器/对象共计12个（ES5中新加了JSON），这里列举了可访问的8个构造器。剩下如Global不能直接访问，Arguments仅在函数调用时由JS引擎创建，Math，JSON是以对象形式存在的，无需new。它们的__proto__是Object.prototype。如下</p>
+    <script type="text/javascript">
+    console.log('build-in Math, JSON的__proto__是指向Object.prototype')
+    console.log(Math.__proto__ === Object.prototype); // true
+    console.log(JSON.__proto__ === Object.prototype); // true
+    </script>
+    <p>自定义的构造函数__proto__也是指向Function.prototype</p>
+    <script type="text/javascript">
+    console.log('自定义的构造函数');
+    // 函数声明
+    function Person() {}
+        // 函数表达式
+    var Man = function() {}
+    console.log(Person.__proto__ === Function.prototype) // true
+    console.log(Man.__proto__ === Function.prototype) // true
+    </script>
+</body>
+
+</html>

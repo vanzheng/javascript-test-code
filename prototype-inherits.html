@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>js原型链继承</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function A(mark) {
+        this.mark = mark;
+        this.markA = 'A';
+    }
+    A.prototype.getMark = function() {
+        return this.mark;
+    }
+
+    function B(mark) {　　
+        this.mark = mark
+    }
+
+    //var temp = new A("A");
+    //B.prototype = temp;
+    //上面语句和下语句作用相同
+
+    B.prototype = new A("A"); //实例化一个A，其赋值于B.prototype
+    　　　　　　　　　　　　　　　 //我们知道了原型链，这样做就是将B的原型对象与A的原型对象通过原型链(__proto__)连接起来
+    　　　　　　　　　　　　　　　 //以实现继承
+
+
+    var b = new B("B");
+
+    console.log(b.mark); // B的实例属性mark 
+    console.log(b.markA); // 从B的实例属性开始查找 -> b.__proto__ -> B.prototype (A的实例) -> __proto__ -> A.prototype 找到
+    console.log(b.markC); // 从B的实例属性开始查找 -> b.__proto__ -> B.prototype (A的实例) -> __proto__ -> A.prototype -> __proto__ -> Object.prototype -> __proto__ == null
+    </script>
+    <script type="text/javascript">
+    function C(mark) {
+        this.mark = mark;
+    }
+    C.prototype.getMark = function() {
+        return this.mark;
+    }
+
+    function D(mark) {　　
+        this.mark = mark
+    }
+
+    D.prototype = C; 
+
+
+    var d = new D("d");
+
+    console.log(d.mark); 
+    console.log(d.__proto__());
+
+    function E(mark) {
+        this.mark = mark;
+    }
+
+    E.prototype.getMark = function() {
+        return this.mark;
+    }
+
+    function F(mark) {　　
+        this.mark = mark
+    }
+
+    var e = new E('e');
+
+    console.log(e.__proto__ === E.prototype); 
+    console.log(E.__proto__ === Function.prototype);
+    console.log('/****** E prototype chain start ******/');
+    console.log('E.prototype:');
+    console.log(E.prototype);
+    console.log('E.prototype.prototype:');
+    console.log(E.prototype.prototype);
+    console.log('/****** E __proto__ chain start ******/');
+    console.log('E.__proto__:');
+    console.log(E.__proto__);
+    console.log('E.__proto__.__proto__:');
+    console.log(E.__proto__.__proto__);
+    console.log('E.__proto__.__proto__:');
+    console.log(E.__proto__.__proto__.__proto__);
+    </script>
+</body>
+
+</html>
