@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>js constructor</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var num1 = new Number(1);
+    var num2 = Number(2);
+    var num3 = 3;
+
+    var str1 = new String('1');
+    var str2 = String('2');
+    var str3 = '3';
+
+    var boolean1 = new Boolean(true);
+    var boolean2 = Boolean('true');
+    var boolean3 = true;
+
+    var arr1 = new Array('1', '2');
+    var arr2 = Array('1', '2');
+    var arr3 = ['1', '2'];
+
+    function myFirst(){
+        this.name = 'first';
+    };
+    function mySecond(){
+        this.name = 'second';
+    };
+
+    var my1 = new myFirst();
+    var my2 = new mySecond();
+    var my3 = {};
+    var my4 = [];
+
+    console.log(num1.constructor, num2.constructor, num3.constructor);
+    console.log(str1.constructor, str2.constructor, str3.constructor);
+    console.log(boolean1.constructor, boolean2.constructor, boolean3.constructor);
+    console.log(arr1.constructor, arr2.constructor, arr3.constructor);
+
+    console.log(num1.constructor == num2.constructor);
+    console.log(str1.constructor == str2.constructor);
+    console.log(boolean1.constructor == boolean2.constructor);
+    console.log(arr1.constructor == arr2.constructor);
+
+    console.log(num2.constructor == num3.constructor);
+    console.log(str2.constructor == str3.constructor);
+    console.log(boolean2.constructor == boolean3.constructor);
+    console.log(arr2.constructor == arr3.constructor);
+
+    console.log('-------------- primitive values --------------');
+    console.log(num1.constructor === Number, num2.constructor === Number, num3.constructor === Number);
+    console.log(str1.constructor === String, str2.constructor === String, str3.constructor === String);
+    console.log(boolean1.constructor === Boolean, boolean2.constructor === Boolean, boolean3.constructor === Boolean);
+    console.log(arr1.constructor === Array, arr2.constructor === Array, arr3.constructor === Array);
+
+    console.log('-------------- complex values --------------');
+    console.log(my1.constructor === myFirst);
+    console.log(my2.constructor === mySecond);
+    console.log(my3.constructor === Object);
+    console.log(my4.constructor === Array);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>js hasOwnProperty and in</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var arr = [1, 2];
+    arr.title = 'test';
+    var obj = {
+        'foo': 'bar'
+    };
+    var obj2 = {
+        name: 'obj2',
+        foo: 'foo1',
+        showName: function() {
+
+        }
+    };
+
+    function test() {
+        this.a = 'a';
+        this.b = 'b';
+    }
+
+    test.prototype = {
+        showa: function() {},
+        showb: function() {}
+    };
+
+    var t = new test();
+
+    console.log('--- Array ---');
+    console.log(arr.hasOwnProperty('join'));
+    console.log(arr.hasOwnProperty('title'));
+    console.log('---- Object ---');
+    console.log(obj.hasOwnProperty('toString'));
+    console.log(obj.hasOwnProperty('foo'));
+
+    function foreach1(){
+    for (var key in obj2) { console.log(key); }
+
+}
+
+    function foreach2() {
+        for (var key in t) {
+            if (t.hasOwnProperty(key)) {
+                console.log(key);
+            }
+        }
+    }
+
+    foreach1();
+    foreach2();
+    console.log(key);
+    </script>
+</body>
+
+</html>
