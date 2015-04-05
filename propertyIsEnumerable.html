@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>propertyIsEnumerable</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var obj = {
+        'a': 1,
+        'b': 2,
+        test: function() {}
+    };
+
+    function foo() {
+        this.a = 'a';
+        this.b = 'b';
+    }
+
+    foo.prototype = {
+        test: function (){}
+    };
+
+    var f = new foo();
+
+    console.log(obj.propertyIsEnumerable('a'));
+    console.log(obj.propertyIsEnumerable('b'));
+    console.log(obj.propertyIsEnumerable('test'));
+    console.log(f.propertyIsEnumerable('a'));
+    console.log(f.propertyIsEnumerable('b'));
+    console.log(f.propertyIsEnumerable('test'));
+
+    for (var key in f) {
+        if (f.hasOwnProperty[key]) {
+            console.log(key);    
+        }
+    }
+
+    for (var key in f) {
+        console.log(key);    
+    }
+    </script>
+</body>
+
+</html>
