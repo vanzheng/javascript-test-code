@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>isPrototypeOf</title>
+</head>
+
+<body>
+    <h3>isPrototypeOf() 方法测试一个对象是否存在于另一个对象的原型链上。</h3>
+    <script type="text/javascript">
+    function foo(){
+
+    }
+
+    function foo2(){
+
+    }
+
+    foo2.prototype = new foo();
+
+    function foo3(){
+
+    }
+
+    foo3.prototype = new foo2();
+
+    var footest = new foo();
+    var foo2test = new foo2();
+    var foo3test = new foo3();
+
+    console.log(foo2.prototype.isPrototypeOf(foo3));
+    console.log(foo.prototype.isPrototypeOf(foo3));
+    console.log(foo2.prototype.isPrototypeOf(foo3test));
+    console.log(foo.prototype.isPrototypeOf(foo3test));
+    console.log(foo2.prototype.isPrototypeOf(foo));
+    console.log(foo2.prototype.isPrototypeOf(footest));
+    console.log('---------------------');
+    console.log(foo2.isPrototypeOf(foo3test));
+    console.log(foo.isPrototypeOf(foo3test));
+    </script>
+</body>
+
+</html>
